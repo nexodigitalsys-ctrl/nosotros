@@ -45,8 +45,7 @@ export default function OnboardingPage() {
   }
 
   function shareWhatsApp() {
-    const appUrl = process.env.NEXT_PUBLIC_APP_URL || window.location.origin
-    const text = `Te invito a Nosotros, nuestro espacio privado para los próximos 30 días 💛\nÚnete aquí: ${appUrl}/join/${inviteCode}`
+    const text = `Te invito a Nosotros, nuestro espacio privado para los próximos 30 días 💛\nÚnete aquí: ${window.location.origin}/join/${inviteCode}`
     window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank')
   }
 
