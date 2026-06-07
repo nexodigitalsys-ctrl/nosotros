@@ -27,6 +27,15 @@ export async function GET(request: Request) {
           .single()
 
         if (profile?.couple_id) {
+          const { data: couple } = await supabase
+            .from('couples')
+            .select('pact_signed_a, pact_signed_b')
+            .eq('id', profile.couple_id)
+            .single()
+
+          if (couple?.pact_signed_a && couple?.pact_signed_b) {
+            return NextResponse.redirect(`${origin}/hoy`)
+          }
           return NextResponse.redirect(`${origin}/pacto`)
         }
       }
