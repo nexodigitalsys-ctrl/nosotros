@@ -34,7 +34,7 @@ function LoginForm() {
   }
 
   async function handleVerify() {
-    if (otp.length < 6) { setError('Introduce los 6 dígitos.'); return }
+    if (otp.length < 8) { setError('Introduce los 8 dígitos.'); return }
     setLoading(true)
     setError('')
 
@@ -83,15 +83,15 @@ function LoginForm() {
           type="text"
           inputMode="numeric"
           value={otp}
-          onChange={e => setOtp(e.target.value.replace(/\D/g, '').slice(0, 6))}
-          placeholder="000000"
+          onChange={e => setOtp(e.target.value.replace(/\D/g, '').slice(0, 8))}
+          placeholder="00000000"
           autoFocus
           className="w-full px-4 py-4 rounded-xl border border-stone-200 bg-white focus:outline-none focus:ring-2 focus:ring-rose-300 text-stone-800 placeholder-stone-400 font-mono text-center text-3xl tracking-widest"
         />
         {error && <p className="text-rose-500 text-sm text-center">{error}</p>}
         <button
           onClick={handleVerify}
-          disabled={otp.length < 6 || loading}
+          disabled={otp.length < 8 || loading}
           className="w-full py-3 bg-rose-500 hover:bg-rose-600 active:bg-rose-700 disabled:bg-rose-300 text-white font-semibold rounded-xl transition-colors"
         >
           {loading ? 'Verificando…' : 'Entrar →'}
